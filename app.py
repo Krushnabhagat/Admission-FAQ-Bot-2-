@@ -42,13 +42,13 @@ Instructions:
    actually have access to its information.
 """
 
-# Read the API key securely from Streamlit Secrets
+# Read API key securely from Streamlit Secrets
 api_key = st.secrets.get("GEMINI_API_KEY", "")
 
 if not api_key:
     st.warning(
         "Gemini API key is not configured. "
-        "Please add GEMINI_API_KEY in Streamlit Secrets."
+        "Add GEMINI_API_KEY in Streamlit Cloud Secrets."
     )
 
 # Store conversation history
@@ -74,9 +74,10 @@ if question:
 
     if not api_key:
         st.error(
-            "API key missing. Please configure it in "
-            "Streamlit Cloud → Settings → Secrets."
+            "API key missing. Go to Streamlit Cloud → "
+            "App Settings → Secrets and configure GEMINI_API_KEY."
         )
+
     else:
         try:
             client = genai.Client(api_key=api_key)
@@ -122,7 +123,7 @@ if question:
                 "content": answer
             })
 
-       except Exception as e:
+        except Exception as e:
             st.error(
                 f"Gemini error: {type(e).__name__}: {e}"
             )
