@@ -100,7 +100,7 @@ if question:
             with st.chat_message("assistant"):
                 with st.spinner("Thinking..."):
                     response = client.models.generate_content(
-                        model="gemini-2.5-flash",
+                       model="gemini-3.8-flash",
                         contents=contents,
                         config=types.GenerateContentConfig(
                             system_instruction=SYSTEM_PROMPT,
