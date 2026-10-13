@@ -122,11 +122,9 @@ if question:
                 "content": answer
             })
 
-        except Exception:
+       except Exception as e:
             st.error(
-                "Sorry, I could not get a response from Gemini. "
-                "Please check your API key, model availability, "
-                "API quota and network connection, then try again."
+                f"Gemini error: {type(e).__name__}: {e}"
             )
 
 # Clear conversation button
